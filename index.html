@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criador de Personagem - Tiny Dungeon</title>
+    <style>
+        /* --- Nova Paleta de Cores Pastel --- */
+        :root {
+            --cor-fundo: #fdf6e3; /* Bege tipo pergaminho */
+            --cor-secao: #ffffff; /* Branco para os cards */
+            --cor-texto: #3d3d3d; /* Cinza escuro para leitura */
+            --cor-destaque: #58a399; /* Verde-água pastel */
+            --cor-destaque-hover: #4a8a81; /* Verde-água mais escuro */
+            --cor-borda: #e0e0e0; /* Cinza claro para bordas */
+            --cor-texto-suave: #6c757d; /* Cinza para descrições */
+        }
+
+        /* --- Estilos Gerais --- */
+        body {
+            font-family: 'Georgia', serif; /* Fonte mais clássica */
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            max-width: 750px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: var(--cor-destaque);
+            border-bottom: 2px solid var(--cor-destaque);
+            padding-bottom: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .secao {
+            background-color: var(--cor-secao);
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        label {
+            font-weight: bold;
+            color: var(--cor-destaque);
+        }
+        input[type="text"],
+        textarea { /* Adicionado textarea aqui para unificar estilos */
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid var(--cor-borda);
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            color: var(--cor-texto);
+            font-size: 16px;
+            font-family: 'Georgia', serif;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--cor-destaque);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: var(--cor-destaque-hover);
+        }
+
+        /* --- Estilos para Seleção de Raça --- */
+        .raca-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .raca-opcao {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .raca-opcao:hover {
+            background-color: #f8f9fa;
+            border-color: var(--cor-destaque);
+        }
+        .raca-opcao input[type="radio"] {
+            margin-right: 15px;
+            margin-top: 5px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--cor-destaque);
+        }
+        .raca-opcao img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid var(--cor-borda);
+        }
+        .raca-info h3 {
+            margin: 0 0 5px 0;
+            color: var(--cor-texto);
+        }
+        .raca-info p, .raca-info ul {
+            margin: 0;
+            font-size: 14px;
+            color: var(--cor-texto-suave);
+            line-height: 1.5;
+        }
+        .raca-info ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        /* --- Estilos para Traços e Proficiência --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .grid-container div {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--cor-borda);
+        }
+        .grid-container label {
+            font-weight: normal;
+            color: var(--cor-texto);
+        }
+        .grid-container input[type="checkbox"] {
+            margin-right: 8px;
+            accent-color: var(--cor-destaque);
+        }
+        .proficiencia-opcao {
+            margin-bottom: 10px;
+        }
+        .proficiencia-opcao p {
+            font-size: 12px;
+            color: var(--cor-texto-suave);
+            margin-left: 25px;
+            margin-top: 2px;
+        }
+        .proficiencia-opcao input[type="radio"] {
+             accent-color: var(--cor-destaque);
+        }
+
+        /* --- Estilos para Resultado Final --- */
+        #resultado {
+            margin-top: 30px;
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--cor-destaque);
+        }
+        #resultado.hidden {
+            display: none;
+        }
+        #resultado h2 {
+            border: none;
+        }
+        #fichaFinal {
+            background-color: var(--cor-fundo);
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            user-select: all;
+            border: 1px dashed var(--cor-texto-suave);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Criador de Personagem</h1>
+
+    <!-- Seção de Informações Básicas -->
+    <div class="secao">
+        <label for="nome">Nome do Personagem:</label>
+        <input type="text" id="nome" placeholder="Digite o nome do seu personagem">
+    </div>
+
+    <!-- Seção de Raça -->
+    <div class="secao">
+        <h2>Escolha sua Raça</h2>
+        <div class="raca-container">
+            <!-- Humano -->
+            <label class="raca-opcao">
+                <input type="radio" name="raca" value="Humano" checked>
+                <img src="humano.png" alt="Imagem de um Humano">
+                <div class="raca-info">
+                    <h3>Humano</h3>
+                    <p>Humanos são a Raça mais prolífica devido à sua extrema adaptabilidade e determinação. Humanos conseguem viver em condições difíceis, desde a tundra gelada até os desertos escaldantes. Eles podem produzir cidades gloriosas ou viver vidas simples como nômades.<br/><br/>Humanos são tão variados quanto os lugares onde podem ser encontrados. Eles vêm em todas as formas, tamanhos e temperamentos. Em média, eles têm entre 1,50 e 1,80 metros de altura, com os homens tendendo a ser mais altos que as mulheres.</p>
+                    <ul>
+                    <li>6 Pontos de Vida</li>
+                    <li>Humanos selecionam um Traço adicional da Lista de Traços.</li>
+                    </ul>
+                </div>
+            </label>
+            <!-- Elfo -->
+            <label class="raca-opcao">
+                <input type="radio" name="raca" value="Fey">
+                <img src="elfo.png" alt="Imagem de um Elfo">
+                <div class="raca-info">
+                    <h3>Fey</h3>
+                    <p>Conhecidos como elfos para os humanos, os Fey constroem suas cidades escondidas nas profundezas das florestas. Eles são renomados por seu talento com arco e flecha, que usam com eficácia mortal para proteger seus territórios, enquanto permanecem escondidos nas copas das árvores. Eles são um povo naturalmente secreto, e pode ser difícil ganhar sua confiança.<br/><br/>Fey são ligeiramente mais baixos que o humano médio, com corpos esguios e graciosos e orelhas alongadas que se afinam em ponta. Eles tendem a ser andróginos na aparência, considerados incrivelmente belos, mesmo por membros de outras Raças.</p>
+                    <ul>
+                    <li>6 Pontos de Vida</li>
+                    <li>Fey começam com o Traço Racial <b>Mestria em Arco</b>.</li>
+                    <li><b>Mestria em Arco</b>: Você é Especializado em arcos e tem Vantagem ao usá-los. Isso é um adicional à arma Especializada escolhida na Criação de Aventureiro.</li>
+                    </ul>
+                </div>
+            </label>
+            <!-- Anão -->
+            <label class="raca-opcao">
+                <input type="radio" name="raca" value="Anão">
+                <img src="anao.png" alt="Imagem de um Anão">
+                <div class="raca-info">
+                    <h3>Anão</h3>
+                    <p>Anões são criaturas atarracadas e rudes que vêm de magníficas cidades esculpidas nas montanhas. Eles se orgulham de sua bebida, artesanato e proeza em combate. A sociedade anã é altamente influenciada por um forte senso de honra e justiça. Por causa disso, eles são vistos como indivíduos confiáveis, mas também teimosos e apegados aos seus costumes.<br/><br/>Em média, anões, tanto homens quanto mulheres, têm 1,2 metros de altura e corpos largos e musculosos. É altamente suspeito encontrar um anão adulto sem uma longa barba trançada. O crescimento da barba é um rito de passagem para os homens anões, e uma vez que começam a crescer a barba, nunca a raspam.</p>
+                    <ul>
+                    <li>8 Pontos de Vida</li>
+                    <li>Anões começam com o Traço Racial <b>Visão no Escuro</b>.</li>
+                    <li><b>Visão no Escuro</b>: Você consegue ver a 9 metros ao seu redor na escuridão total.</li>
+                    </ul>
+                </div>
+            </label>
+            <!-- Goblin -->
+            <label class="raca-opcao">
+                <input type="radio" name="raca" value="Goblin">
+                <img src="goblin.png" alt="Imagem de um Goblin">
+                <div class="raca-info">
+                    <h3>Goblin</h3>
+                    <p>Goblins são um povo diminuto de pele verde que tenta sobreviver onde pode — geralmente vivendo em pequenas tribos ou como indivíduos solitários. Seu comportamento, mesmo na idade adulta, é infantil. Eles são curiosos por natureza e um tanto travessos, embora suas travessuras raramente sejam maliciosas. Goblins também se distraem facilmente com objetos brilhantes e têm uma afeição particular por ouro.<br/><br/>Com pouco mais de 0,9 metros de altura, goblins são em média magricelas e têm cabeças ovais grandes com orelhas protuberantes semelhantes às de morcegos. Eles são notoriamente rápidos e, graças à sua fascinação compulsiva por ouro, ganharam notoriedade como ladrões. Apesar de sua aparência e natureza que lembram diabretes, goblins geralmente são criaturas de bom coração que apreciam a companhia de qualquer um que consiga tolerá-los.</p>
+                    <ul>
+                    <li>4 Pontos de Vida</li>
+                    <li>Goblins começam com o Traço Racial <b>Agilidade Goblin</b>.</li>
+                    <li><b>Agilidade Goblin</b>: Você pode fazer um Teste de Salvação de 1d6 sempre que for atingido com sucesso por um inimigo. Se seu Teste for bem-sucedido, você desvia do ataque e não sofre dano. Declarar Desviar como uma Ação não tem benefício adicional.</li>
+                    </ul>
+                </div>
+            </label>
+            <!-- Salimar -->
+            <label class="raca-opcao">
+                <input type="radio" name="raca" value="Salimar">
+                <img src="salimar.png" alt="Imagem de um Salimar">
+                <div class="raca-info">
+                    <h3>Salimar</h3>
+                    <p>Salimar conquistaram a reputação de mercadores intransigentes, mas justos, vivendo perto de corpos d'água e cidades portuárias para conduzir seus negócios. São criaturas altamente inteligentes e dignas, com grande respeito e interesse pela erudição. Na cultura Salimariana, vestir-se bem é absolutamente essencial, pois é um símbolo de sua posição e fortuna. Sua pele é preta lustrosa e lisa, com manchas que vão da cabeça à cauda, variando do branco neve ao prateado e ao cinza-escuro.<br/><br/>Em média, Salimar têm aproximadamente 1,35 metros de altura; eles têm corpos alongados, com pernas um tanto atarracadas e caudas grossas. É amplamente conhecido que Salimar não são somente imunes ao fogo, mas são realmente curados por ele.</p>
+                    <ul>
+                    <li>5 Pontos de Vida</li>
+                    <li>Salimar começam com o Traço <b>Racial Cura Pirotérmica</b>.</li>
+                    <li><b>Cura Pirotérmica</b>: Qualquer dano que seria causado a você por uma fonte de fogo, em vez disso, o cura pela mesma quantidade.</li>
+                    </ul>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <!-- Seção de Traços -->
+    <div class="secao">
+        <h2>Escolha 3 Traços (4 se for humano)</h2>
+        <div class="grid-container" id="tracos-container">
+            <div><input type="checkbox" id="traco1" value="Acadêmico"><label for="traco1"> <b>Acadêmico:</b> <i>Eu não fui para a academia por quatro anos à toa.</i> Você ganha Vantagem ao Testar para ver se sabe alguma informação específica.</label></div>
+            <div><input type="checkbox" id="traco2" value="Acrobata"><label for="traco2"> <b>Acrobata:</b> <i>Está lá em cima? Sem problemas!</i> Você ganha Vantagem ao Testar para fazer truques acrobáticos como rolar, pular longas distâncias, escalar e manter o equilíbrio.</label></div>
+            <div><input type="checkbox" id="traco3" value="Alquimista"><label for="traco3"> <b>Alquimista:</b> <i>Sangue de dragão tem muitos usos. Também fica uma delícia na salada.</i> Com os reagentes e receitas certos, você pode misturar poções, elixires e venenos. Você também ganha Vantagem para identificar líquidos desconhecidos.</label></div>
+            <div><input type="checkbox" id="traco4" value="Atirador"><label for="traco4"> <b>Atirador:</b> <i>As chances de acertar seu alvo aumentam dramaticamente quando você mira nele.</i> Ao usar a Ação Focar, seu próximo ataque com uma arma à distância é bem-sucedido em uma rolagem de 3, 4, 5 ou 6.</label></div>
+            <div><input type="checkbox" id="traco5" value="Brigão"><label for="traco5"> <b>Brigão:</b> <i>Todo mundo tem um plano até levar um soco na cara.</i> Você ganha Vantagem ao fazer ataques desarmados.</label></div>
+            <div><input type="checkbox" id="traco6" value="Carismático"><label for="traco6"> <b>Carismático:</b> <i>Eu consigo o que eu quiser sem nem precisar pedir.</i> Você ganha Vantagem ao tentar convencer alguém de algo ou ao tentar influenciar essa pessoa.</label></div>
+            <div><input type="checkbox" id="traco7" value="Curandeiro"><label for="traco7"> <b>Curandeiro:</b> <i>Já vi pior, filho. Você vai sobreviver.</i> Como uma Ação, você pode fazer um Teste de 2d6 para curar uma criatura que não seja você. Se o Teste for bem-sucedido, a criatura alvo é curada em 2 Pontos de Vida. Esse Traço também pode ser usado para curar veneno, doenças, e outras aflições físicas que não são mágicas. Você precisa estar ao lado da criatura para curá-la.</label></div>
+            <div><input type="checkbox" id="traco8" value="Durão"><label for="traco8"> <b>Durão:</b> <i>Eu não cheguei até aqui sendo feito de açúcar.</i> Você ganha 2 Pontos de Vida adicionais.</label></div>
+            <div><input type="checkbox" id="traco9" value="Duro de Matar"><label for="traco9"> <b>Duro de Matar:</b> <i>Eu não vou morrer tão fácil.</i> Quando um ataque o reduziria a 0 Pontos de Vida, ele o reduz a 1 Ponto de Vida. Você pode fazer isso uma vez por dia.</label></div>
+            <div><input type="checkbox" id="traco10" value="Estudante de Magia"><label for="traco10"> <b>Estudante de Magia:</b> <i>F de filactério.</i> Você passou anos aprendendo a linguagem sagrada do arcano, permitindo que você leia palavras imbuídas de poder de pergaminhos mágicos.</label></div>
+            <div><input type="checkbox" id="traco11" value="Explorador de Masmorras"><label for="traco11"> <b>Explorador de Masmorras:</b> <i>Vamos para a esquerda. Eu sei pela forma como o musgo cresce e por ter visto muitas masmorras no meu tempo.</i> Você ganha Vantagem ao Testar para encontrar seu caminho em um sistema de masmorras ou cavernas, e ao Testar para identificar criaturas nativas de masmorras ou cavernas.</label></div>
+            <div><input type="checkbox" id="traco12" value="Familiar"><label for="traco12"> <b>Familiar:</b> <i>Seu gato de sombras sem rosto tá me assustando, cara.</i> Desde que você se lembra, você nunca esteve sozinho. Outro espírito se ligou ao seu, aceitando-o como seu amigo e mestre.</label></div>
+            <div><input type="checkbox" id="traco13" value="Forte"><label for="traco13"> <b>Forte:</b> <i>Para trás, eu vou chutar!</i> Você ganha Vantagem ao Testar para fazer algo com força bruta.</label></div>
+            <div><input type="checkbox" id="traco14" value="Furtivo"><label for="traco14"> <b>Furtivo:</b> <i>Ei, você ouviu algo?</i> Você ganha Vantagem ao Testar para se esconder ou se esgueirar sem que outros o notem.</label></div>
+            <div><input type="checkbox" id="traco15" value="Mãos Leves"><label for="traco15"> <b>Mãos Leves:</b> <i>Eu poderia jurar que deixei bem aqui!</i> Você ganha Vantagem ao Testar para arrombar fechaduras, roubar ou fazer prestidigitação.</label></div>
+            <div><input type="checkbox" id="traco16" value="Memória Eidética"><label for="traco16"> <b>Memória Eidética:</b> <i>Você se lembra daquele cara naquela cidade? O que ele fez? O que ele disse?</i> Ao Testar para recordar informações que você viu ou ouviu anteriormente — mesmo de passagem — você tem sucesso em uma rolagem de 4, 5 ou 6.</label></div>
+            <div><input type="checkbox" id="traco17" value="Mestre de Armadilhas"><label for="traco17"> <b>Mestre de Armadilhas:</b> <i>É uma armadilha!</i> Você ganha Vantagem ao Testar para criar, localizar e desarmar armadilhas. Você também ganha Vantagem em Testes de Salvação contra armadilhas.</label></div>
+            <div><input type="checkbox" id="traco18" value="Oportunista"><label for="traco18"> <b>Oportunista:</b> <i>A falha de um é a chance de outro para atacar o tolo que falhou.</i> Se um inimigo, dentro do alcance, falhar em um ataque contra você, você pode fazer um ataque imediatamente com Desvantagem contra esse inimigo.</label></div>
+            <div><input type="checkbox" id="traco19" value="Orador das Feras"><label for="traco19"> <b>Orador das Feras:</b> <i>O que é, garoto?! O rei caiu em um poço?!</i> Você é capaz de se comunicar com animais. Essa forma de comunicação é primitiva e muito simples.</label></div>
+            <div><input type="checkbox" id="traco20" value="Perceptivo"><label for="traco20"> <b>Perceptivo:</b> <i>O que foi visto não pode ser desvisto.</i> Você ganha Vantagem ao Testar para obter informações sobre seus arredores ou encontrar coisas que podem estar escondidas. Você ganha isso mesmo enquanto dorme.</label></div>
+            <div><input type="checkbox" id="traco21" value="Perspicaz"><label for="traco21"> <b>Perspicaz:</b> <i>Não sei se é verdade...</i> Você ganha Vantagem ao Testar para discernir se alguém está dizendo a verdade ou mentindo.</label></div>
+            <div><input type="checkbox" id="traco22" value="Pés Ligeiros"><label for="traco22"> <b>Pés Ligeiros:</b> <i>Fugir é sempre uma opção válida.</i> Sua velocidade aumenta de 7,5 metros para 9 metros. Você ganha Vantagem em Testes para perseguir ou correr.</label></div>
+            <div><input type="checkbox" id="traco23" value="Portador do Escudo"><label for="traco23"> <b>Portador do Escudo:</b> <i>Eu te cubro.</i> Ao empunhar um escudo, faça um Teste com 2d6 para Desviar ou para Ações de Agilidade Goblin ao invés de 1d6. Se escolher esse traço, seu Aventureiro ganha um escudo na criação de Aventureiro.</label></div>
+            <div><input type="checkbox" id="traco24" value="Rastreador"><label for="traco24"> <b>Rastreador:</b> <i>Essas pegadas estão frescas. Ele foi por ali.</i> Você ganha Vantagem ao Testar para rastrear uma pessoa ou animal na natureza. Enquanto estiver ao ar livre, você também pode localizar o norte verdadeiro sem Testes.</label></div>
+            <div><input type="checkbox" id="traco25" value="Resoluto"><label for="traco25"> <b>Resoluto:</b> <i>Não serei uma vítima do medo.</i> Você ganha Vantagem em todos os Testes de Salvação.</label></div>
+            <div><input type="checkbox" id="traco26" value="Sobrevivencialista"><label for="traco26"> <b>Sobrevivencialista:</b> <i>Essas frutas são seguras para comer... eu acho.</i> Você ganha Vantagem ao Testar para buscar comida, encontrar água, buscar abrigo ou criar abrigo na natureza.</label></div>
+            <div><input type="checkbox" id="traco27" value="Tiro Rápido"><label for="traco27"> <b>Tiro Rápido:</b> <i>Pew, pew, pew!</i> Você consegue recarregar uma Arma à Distância e atirar em uma Ação.</label></div>
+            <div><input type="checkbox" id="traco28" value="Tocado pela Magia"><label for="traco28"> <b>Tocado pela Magia:</b> <i>É de família.</i> Você nasceu com uma herança arcana, e embora os séculos tenham diluído o poder, você ainda consegue influenciar sutilmente o mundo ao seu redor somente desejando que aconteça.</label></div>
+            <div><input type="checkbox" id="traco29" value="Vigilante"><label for="traco29"> <b>Vigilante:</b> <i>Melhor estar pronto do que ter que se preparar.</i> Você ganha Vantagem em Testes de Iniciativa.</label></div>
+        </div>
+    </div>
+
+    <!-- Seção de Proficiência com Armas -->
+    <div class="secao">
+        <h2>Proficiência com Armas</h2>
+        <div class="proficiencia-opcao">
+            <input type="radio" id="profLeve" name="proficiencia" value="Corpo a Corpo Leve" checked>
+            <label for="profLeve"> Corpo a Corpo Leve</label>
+            <p>Exemplos: Adaga, Espada Curta, Machado de Mão, Rapieira, Maça, Cajado, Tacape</p>
+        </div>
+        <div class="proficiencia-opcao">
+            <input type="radio" id="profPesada" name="proficiencia" value="Corpo a Corpo Pesada">
+            <label for="profPesada"> Corpo a Corpo Pesada</label>
+            <p>Exemplos: Espada Grande, Machado de Guerra, Lança, Armas de Haste, Mangual de Duas Mãos, Martelo de Guerra</p>
+        </div>
+        <div class="proficiencia-opcao">
+            <input type="radio" id="profDistancia" name="proficiencia" value="À Distância">
+            <label for="profDistancia"> À Distância</label>
+            <p>Exemplos: Funda, Besta, Arco</p>
+        </div>
+        <hr style="border-color: #4f545c; margin: 20px 0;">
+        <label for="arma">Especialista em:</label>
+        <input type="text" id="arma" placeholder="Digite o nome da arma na qual é especialista. Espada Curta? Cajado? Adaga?">
+    </div>
+
+    <!-- Seção Final -->
+    <div class="secao">
+        <h2>Detalhes Finais</h2>
+        <label for="familia">Ramo da Família:</label>
+        <input type="text" id="familia" placeholder="Uma profissão. Aprendeu a forjar com seu pai? Veio de uma família de costureiros?" style="margin-bottom: 15px;">
+        
+        <label for="frase">Sua Crença:</label>
+        <input type="text" id="frase" placeholder="Ex: 'Ouro pode comprar felicidade.' ou 'Minha espada fala por mim.'">
+    </div>
+
+     <!-- Seção de Mais Informações (Opcional) -->
+    <div class="secao">
+        <h2>Mais Informações (Opcional)</h2>
+        <label for="infoAdicional">Aparência, história, anotações...</label>
+        <textarea id="infoAdicional" rows="4" placeholder="Descreva aqui detalhes adicionais sobre seu personagem, se desejar."></textarea>
+    </div>
+
+    <button onclick="gerarFicha()">Gerar Ficha para Copiar</button>
+
+    <!-- Área de Resultado -->
+    <div id="resultado" class="hidden">
+        <h2>Ficha Pronta!</h2>
+        <p>Copie o texto abaixo e cole no WhatsApp:</p>
+        <pre id="fichaFinal"></pre>
+    </div>
+
+    <script>
+        function gerarFicha() {
+            // --- Coleta de Dados ---
+            const nome = document.getElementById('nome').value;
+            const raca = document.querySelector('input[name="raca"]:checked').value;
+            const familia = document.getElementById('familia').value;
+            const frase = document.getElementById('frase').value;
+            const proficiencia = document.querySelector('input[name="proficiencia"]:checked').value;
+            const arma = document.getElementById('arma').value;
+            const infoAdicional = document.getElementById('infoAdicional').value; // CORREÇÃO: Esta linha estava faltando
+
+            const tracosSelecionados = [];
+            const checkboxes = document.querySelectorAll('#tracos-container input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                tracosSelecionados.push(checkbox.value);
+            });
+
+            // --- Validação ---
+            if (!nome || !familia || !frase || !arma) {
+                alert("Por favor, preencha todos os campos obrigatórios (Nome, Ramo da Família, Crença e Arma Especializada)!");
+                return;
+            }
+            // MELHORIA: Validação alterada para exigir no mínimo 1 traço
+            if (tracosSelecionados.length < 1) {
+                alert("Por favor, escolha pelo menos um traço!");
+                return;
+            }
+
+            // --- Montagem da Lista de Traços (Dinâmica) ---
+            // MELHORIA: Cria a lista de traços dinamicamente, funcionando para qualquer quantidade
+            let listaDeTracos = '';
+            tracosSelecionados.forEach(traco => {
+                listaDeTracos += `• ${traco}\n`; // \n cria uma nova linha
+            });
+
+            // --- Montagem da Ficha ---
+            let fichaTexto = `*FICHA DE PERSONAGEM*
+- - - - - - - - - - - - - - -
+*Nome:* ${nome}
+*Raça:* ${raca}
+
+*Traços:*
+${listaDeTracos.trim()}
+
+*Proficiência:* ${proficiencia}
+*Especialização:* ${arma}
+
+*Ramo da Família:* ${familia}
+*Crença:* "${frase}"
+
+*Equipamento Inicial:*
+• ${arma} (sua arma especializada)
+• 10 Peças de Ouro
+• 1 Kit de Aventureiro`;
+
+            // Adiciona a seção extra APENAS se ela foi preenchida
+            if (infoAdicional.trim() !== '') {
+                fichaTexto += `
+- - - - - - - - - - - - - - -
+*Mais Informações:*
+${infoAdicional}`;
+            }
+
+            // --- Exibição do Resultado ---
+            document.getElementById('fichaFinal').textContent = fichaTexto;
+            document.getElementById('resultado').classList.remove('hidden');
+            
+            // Rola a página para o resultado
+            document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
