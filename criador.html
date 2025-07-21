@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -179,9 +178,36 @@
             user-select: all;
             border: 1px dashed var(--cor-texto-suave);
         }
+
+        /* --- NOVO: ESTILO DO BOTÃO VOLTAR AO TOPO --- */
+        #btnTopo {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--cor-destaque);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%; /* Deixa o botão redondo */
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, opacity 0.3s;
+            text-align: center;
+            line-height: 20px; /* Alinha a seta verticalmente */
+        }
+
+        #btnTopo:hover {
+            background-color: var(--cor-destaque-hover);
+        }
     </style>
 </head>
-<body>
+<body id="topo"> <!-- NOVO: Adicionado um ID ao body para o link funcionar -->
 <a href="index.html" style="display:block; text-align:center; margin-bottom: 20px; font-weight: bold;">↩ Voltar ao Menu Principal</a>
     <h1>Criador de Personagem</h1>
 
@@ -352,6 +378,9 @@
         <pre id="fichaFinal"></pre>
     </div>
 
+    <!-- NOVO: BOTÃO VOLTAR AO TOPO -->
+    <a href="#topo" id="btnTopo" title="Voltar ao topo">↑</a>
+
     <script>
         function gerarFicha() {
             // --- Coleta de Dados ---
@@ -361,7 +390,7 @@
             const frase = document.getElementById('frase').value;
             const proficiencia = document.querySelector('input[name="proficiencia"]:checked').value;
             const arma = document.getElementById('arma').value;
-            const infoAdicional = document.getElementById('infoAdicional').value; // CORREÇÃO: Esta linha estava faltando
+            const infoAdicional = document.getElementById('infoAdicional').value;
 
             const tracosSelecionados = [];
             const checkboxes = document.querySelectorAll('#tracos-container input[type="checkbox"]:checked');
@@ -374,17 +403,15 @@
                 alert("Por favor, preencha todos os campos obrigatórios (Nome, Ramo da Família, Crença e Arma Especializada)!");
                 return;
             }
-            // MELHORIA: Validação alterada para exigir no mínimo 1 traço
             if (tracosSelecionados.length < 1) {
                 alert("Por favor, escolha pelo menos um traço!");
                 return;
             }
 
             // --- Montagem da Lista de Traços (Dinâmica) ---
-            // MELHORIA: Cria a lista de traços dinamicamente, funcionando para qualquer quantidade
             let listaDeTracos = '';
             tracosSelecionados.forEach(traco => {
-                listaDeTracos += `• ${traco}\n`; // \n cria uma nova linha
+                listaDeTracos += `• ${traco}\n`;
             });
 
             // --- Montagem da Ficha ---
@@ -407,7 +434,6 @@ ${listaDeTracos.trim()}
 • 10 Peças de Ouro
 • 1 Kit de Aventureiro`;
 
-            // Adiciona a seção extra APENAS se ela foi preenchida
             if (infoAdicional.trim() !== '') {
                 fichaTexto += `
 - - - - - - - - - - - - - - -
@@ -419,8 +445,22 @@ ${infoAdicional}`;
             document.getElementById('fichaFinal').textContent = fichaTexto;
             document.getElementById('resultado').classList.remove('hidden');
             
-            // Rola a página para o resultado
             document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- NOVO: SCRIPT PARA O BOTÃO VOLTAR AO TOPO ---
+        // Pega o botão
+        var meuBotao = document.getElementById("btnTopo");
+
+        // Quando o usuário rola 20px para baixo do topo do documento, mostra o botão
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                meuBotao.style.display = "block";
+            } else {
+                meuBotao.style.display = "none";
+            }
         }
     </script>
 
