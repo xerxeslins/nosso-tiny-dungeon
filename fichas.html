@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas de Personagem - Tiny Dungeon</title>
+    <style>
+        :root {
+            --cor-fundo: #fdf6e3;
+            --cor-secao: #ffffff;
+            --cor-texto: #3d3d3d;
+            --cor-destaque: #58a399;
+            --cor-destaque-hover: #4a8a81;
+            --cor-borda: #e0e0e0;
+            --cor-texto-suave: #6c757d;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            color: var(--cor-destaque);
+            border-bottom: 2px solid var(--cor-destaque);
+            padding-bottom: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        a { color: var(--cor-destaque); text-decoration: none; }
+        a:hover { color: var(--cor-destaque-hover); }
+        .navbar {
+            background-color: var(--cor-secao);
+            padding: 15px 30px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cor-borda);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navbar a {
+            color: var(--cor-destaque);
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .character-sheet {
+            background-color: var(--cor-secao);
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding-top: 60px;
+            margin-top: -40px;
+        }
+        .character-sheet:first-of-type { margin-top: 25px; }
+        .character-main-info {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .character-text-data {
+            flex: 1;
+        }
+        .character-image-container {
+            flex-shrink: 0;
+        }
+        .character-image {
+            display: block;
+            width: 220px;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid var(--cor-borda);
+        }
+        .character-header h2 {
+            color: var(--cor-texto);
+            display: inline;
+            font-family: 'Georgia', serif;
+            font-size: 1.8em;
+            border: none;
+        }
+        .character-header .details { color: var(--cor-texto-suave); font-size: 1em; margin-left: 10px; }
+        .character-belief {
+            font-style: italic;
+            color: var(--cor-texto-suave);
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--cor-borda);
+            padding-left: 10px;
+        }
+        .stat-block {
+            background-color: #f8f9fa;
+            margin-bottom: 8px;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid var(--cor-borda);
+            color: var(--cor-texto);
+        }
+        .stat-block strong { color: var(--cor-destaque); margin-right: 10px; }
+        .accordion-button {
+            background-color: var(--cor-destaque);
+            color: white;
+            cursor: pointer;
+            padding: 12px 15px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .accordion-button:hover, .accordion-button.active { background-color: var(--cor-destaque-hover); }
+        .accordion-button::after { content: '+'; font-size: 1.3em; color: white; float: right; line-height: 1; }
+        .accordion-button.active::after { content: "−"; }
+        .panel {
+            padding: 0 18px;
+            background-color: #f8f9fa;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            border-radius: 0 0 5px 5px;
+            border: 1px solid var(--cor-borda);
+            border-top: none;
+            margin-bottom: 10px;
+        }
+        .accordion-button.active + .panel { padding: 15px 18px; }
+        .panel ul { list-style-type: disc; padding-left: 20px; margin: 0; }
+        .panel ul li { margin-bottom: 5px; }
+        .panel p { margin: 0; padding-bottom: 10px; }
+        .back-to-top { display: block; text-align: right; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="topo">
+        <a href="#personagem1">Ferrum Onix</a>
+        <a href="#personagem2">Sunat Bhal</a>
+    </nav>
+    <div class="container">
+        <h1>Fichas de Personagem</h1>
+        
+        <!-- FICHA DO PERSONAGEM 1 -->
+        <section id="personagem1" class="character-sheet">
+            <div class="character-main-info">
+                <div class="character-text-data">
+                    <div class="character-header"><h2>Ferrum Onix</h2><span class="details">(Salimar | 5 PV)</span></div>
+                    <p class="character-belief">Poder vai além de armas e dinheiro.</p>
+                    <div class="stat-block"><strong>Proficiência:</strong> Corpo a Corpo Leve (Cajado)</div>
+                    <div class="stat-block"><strong>Traços:</strong> Acadêmico, Estudante de Magia, Tocado pela Magia</div>
+                </div>
+                <div class="character-image-container">
+                    <img src="onix.png" alt="Imagem de Ferrum Onix" class="character-image">
+                </div>
+            </div>
+            <button class="accordion-button">Equipamento</button>
+            <div class="panel"><ul><li>Cajado (arma especializada)</li><li>10 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
+            <button class="accordion-button">Mais Informações</button>
+            <div class="panel"><p>Uma família bem grande de caçadores de recompensas com sangue mágico (devido a um pacto de um ancestral da família com um dragão). Desde criança, cuidados por tios e tias sobreviventes de alguma busca. Com o conteúdo e conhecimento familiar, buscam incessantemente os mais variados objetos e artefatos mágicos possíveis, buscando todos os segredos da magia. Ferrum é só mais um Ônix buscando seu lugar no mundo.</p></div>
+            <a href="#topo" class="back-to-top">Voltar ao Topo ↑</a>
+        </section>
+
+        <!-- FICHA DO PERSONAGEM 2 -->
+        <section id="personagem2" class="character-sheet">
+            <div class="character-main-info">
+                <div class="character-text-data">
+                    <div class="character-header"><h2>Sunat Bhal</h2><span class="details">(Humano | 6 PV)</span></div>
+                    <p class="character-belief">Existe um lugar no mundo para cada ser.</p>
+                    <div class="stat-block"><strong>Proficiência:</strong> À Distância (Besta)</div>
+                    <div class="stat-block"><strong>Traços:</strong> Atirador, Tiro Rápido, Curandeiro, Pés Ligeiros</div>
+                </div>
+                <div class="character-image-container">
+                    <img src="sunat.png" alt="Imagem de Sunat Bhal" class="character-image">
+                </div>
+            </div>
+            <button class="accordion-button">Equipamento</button>
+            <div class="panel"><ul><li>Besta (arma especializada)</li><li>10 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
+            <button class="accordion-button">Mais Informações</button>
+            <div class="panel"><p>Sunat cresceu num assentamento cavado no subsolo de um deserto glacial. Seus antepassados fugiram de uma profecia e de nobres avarentos, decididos a encontrar um lar em meio as adversidades; Anghoj o ancião teve um sonho que revelou o plano de se esconder dos Deuses sob a terra.</p></div>
+            <a href="#topo" class="back-to-top">Voltar ao Topo ↑</a>
+        </section>
+    </div>
+    <script>
+        var acc = document.getElementsByClassName("accordion-button");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
