@@ -141,7 +141,34 @@
         .panel ul { list-style-type: disc; padding-left: 20px; margin: 0; }
         .panel ul li { margin-bottom: 5px; }
         .panel p { margin: 0; padding-bottom: 10px; }
-        .back-to-top { display: block; text-align: right; margin-top: 20px; font-weight: bold; }
+        
+        /* ESTILO DO BOTÃO VOLTAR AO TOPO (COM SVG) */
+        #btnTopo {
+            display: none; /* Começa escondido */
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--cor-destaque);
+            color: white; /* A cor do ícone SVG será branca */
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, opacity 0.3s;
+            
+            /* Adicionado para centralizar o SVG perfeitamente */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #btnTopo:hover {
+            background-color: var(--cor-destaque-hover);
+        }
     </style>
 </head>
 <body>
@@ -170,7 +197,6 @@
             <div class="panel"><ul><li>Cajado (arma especializada)</li><li>10 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
             <button class="accordion-button">Mais Informações</button>
             <div class="panel"><p>Uma família bem grande de caçadores de recompensas com sangue mágico (devido a um pacto de um ancestral da família com um dragão). Desde criança, cuidados por tios e tias sobreviventes de alguma busca. Com o conteúdo e conhecimento familiar, buscam incessantemente os mais variados objetos e artefatos mágicos possíveis, buscando todos os segredos da magia. Ferrum é só mais um Ônix buscando seu lugar no mundo.</p></div>
-            <a href="#topo" class="back-to-top">Voltar ao Topo ↑</a>
         </section>
 
         <!-- FICHA DO PERSONAGEM 2 -->
@@ -194,11 +220,19 @@
                 <p>O que começou como uma pequena área cavada para proteção contra o frio com o passar de dois séculos se tornou um elaborado conjunto de túneis e antesalas - incluindo um sistema de espelhos para iluminar grandes plantações. Grande o suficiente para virar um mito que abriga fugitivos de todo mundo, desesperados o bastante por algum lugar que os receba para tentar encontrar Osh-Khabalin na vastidão branca.</p>
                 <p>Sunat sempre ouviu as histórias sobre planícies verdes, brisas mornas e árvores mais altas que cinco humanos, trazidas em sua maioria pelos recém chegados. Decidiu se aventurar no mundo para preencher a curiosidade que sempre teve e testar a memória dos Deuses sobre a existência de seu povo.</p>
             </div>
-            <a href="#topo" class="back-to-top">Voltar ao Topo ↑</a>
         </section>
     </div>
+
+    <!-- BOTÃO VOLTAR AO TOPO COM SVG -->
+    <a href="#topo" id="btnTopo" title="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
+
     <script>
-        var acc = document.getElementsByClassName("accordion-button");
+        // Script para o acordeão
+        var acc = document.getElementsByClassName("accordion-button" );
         for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
                 this.classList.toggle("active");
@@ -209,6 +243,18 @@
                     panel.style.maxHeight = panel.scrollHeight + "px";
                 }
             });
+        }
+
+        // Script para o botão Voltar ao Topo
+        var meuBotao = document.getElementById("btnTopo");
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                meuBotao.style.display = "flex";
+            } else {
+                meuBotao.style.display = "none";
+            }
         }
     </script>
 </body>
