@@ -20,6 +20,8 @@
             color: var(--cor-texto);
             margin: 0;
             padding: 0;
+            /* Adicionado para rolagem suave */
+            scroll-behavior: smooth;
         }
         .container {
             max-width: 800px;
@@ -59,6 +61,7 @@
             border-radius: 8px;
             border: 1px solid var(--cor-borda);
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            /* Ajuste para o menu fixo */
             padding-top: 60px;
             margin-top: -40px;
         }
@@ -171,8 +174,9 @@
         }
     </style>
 </head>
-<body>
-    <nav class="navbar" id="topo">
+<!-- A CORREÇÃO ESTÁ AQUI -->
+<body id="topo">
+    <nav class="navbar">
         <a href="index.html">↩ Voltar ao Menu</a>
         <a href="#personagem1">Ferrum Onix</a>
         <a href="#personagem2">Sunat Bhal</a>
