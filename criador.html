@@ -179,9 +179,9 @@
             border: 1px dashed var(--cor-texto-suave);
         }
 
-        /* --- NOVO: ESTILO DO BOTÃO VOLTAR AO TOPO --- */
+        /* --- ESTILO DO BOTÃO VOLTAR AO TOPO (COM SVG) --- */
         #btnTopo {
-            display: none; /* Escondido por padrão */
+            display: none; /* Começa escondido */
             position: fixed;
             bottom: 20px;
             right: 30px;
@@ -189,17 +189,18 @@
             border: none;
             outline: none;
             background-color: var(--cor-destaque);
-            color: white;
+            color: white; /* A cor do ícone SVG será branca */
             cursor: pointer;
-            padding: 15px;
-            border-radius: 50%; /* Deixa o botão redondo */
-            font-size: 18px;
+            border-radius: 50%;
             width: 50px;
             height: 50px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: background-color 0.3s, opacity 0.3s;
-            text-align: center;
-            line-height: 20px; /* Alinha a seta verticalmente */
+            
+            /* Adicionado para centralizar o SVG perfeitamente */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         #btnTopo:hover {
@@ -207,7 +208,7 @@
         }
     </style>
 </head>
-<body id="topo"> <!-- NOVO: Adicionado um ID ao body para o link funcionar -->
+<body id="topo">
 <a href="index.html" style="display:block; text-align:center; margin-bottom: 20px; font-weight: bold;">↩ Voltar ao Menu Principal</a>
     <h1>Criador de Personagem</h1>
 
@@ -378,8 +379,12 @@
         <pre id="fichaFinal"></pre>
     </div>
 
-    <!-- NOVO: BOTÃO VOLTAR AO TOPO -->
-    <a href="#topo" id="btnTopo" title="Voltar ao topo">↑</a>
+    <!-- BOTÃO VOLTAR AO TOPO COM SVG -->
+    <a href="#topo" id="btnTopo" title="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
 
     <script>
         function gerarFicha() {
@@ -448,7 +453,7 @@ ${infoAdicional}`;
             document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- NOVO: SCRIPT PARA O BOTÃO VOLTAR AO TOPO ---
+        // --- SCRIPT PARA O BOTÃO VOLTAR AO TOPO ---
         // Pega o botão
         var meuBotao = document.getElementById("btnTopo");
 
@@ -457,7 +462,8 @@ ${infoAdicional}`;
 
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                meuBotao.style.display = "block";
+                // Usa flex para o botão ficar visível, pois o estilo padrão agora é flex
+                meuBotao.style.display = "flex";
             } else {
                 meuBotao.style.display = "none";
             }
