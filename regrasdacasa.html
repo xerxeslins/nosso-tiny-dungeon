@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras da Casa - Crystal Fantasy</title>
+    <style>
+        :root {
+            --cor-fundo: #fdf6e3;
+            --cor-secao: #ffffff;
+            --cor-texto: #3d3d3d;
+            --cor-destaque: #58a399;
+            --cor-destaque-hover: #4a8a81;
+            --cor-borda: #e0e0e0;
+            --cor-texto-suave: #6c757d;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content-box {
+            background-color: var(--cor-secao);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3 {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--cor-destaque);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--cor-destaque);
+            padding-bottom: 15px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--cor-borda);
+            padding-bottom: 10px;
+        }
+        h3 {
+            text-align: left;
+            font-size: 1.4em;
+            color: var(--cor-destaque-hover);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p, li {
+            font-size: 1.1em;
+            text-align: justify;
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        strong {
+            color: var(--cor-texto);
+        }
+        .back-to-menu {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px 30px;
+            background-color: var(--cor-destaque);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .back-to-menu:hover {
+            background-color: var(--cor-destaque-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <h1>Regras da Casa</h1>
+
+            <p>No nosso jogo de <strong>Tiny Dungeon</strong>, vamos usar um conjunto de regras bem simples, mas é importante que saibam que sou flexível! O principal objetivo é garantir que a história e a diversão sejam sempre a prioridade.</p>
+
+            <h3>O que isso significa na prática?</h3>
+            <ul>
+                <li><strong>Regras Flexíveis:</strong> Posso quebrar ou criar regras novas se achar que faz sentido para a narrativa ou para tornar um momento mais emocionante. Por exemplo, uma <strong>arma pesada</strong> geralmente atinge um único inimigo, mas se o contexto permitir, talvez eu considere possível a arma atravessar o alvo da frente e atingir, também, o de trás, devido ao maior alcance da arma.</li>
+                <li><strong>Dificuldade Adaptável:</strong> A dificuldade de sucesso padrão (rolar 5 ou 6) pode mudar. Para um inimigo especialmente poderoso, pode ser que apenas um <strong>6</strong> sirva. Ou, para uma tarefa mais fácil, até um <strong>3</strong> pode ser sucesso!</li>
+                <li><strong>Consequências Intensificadas:</strong> Um resultado de <strong>1 e 1</strong> nos dados pode significar algo muito pior do que uma falha comum, adicionando mais emoção e imprevisibilidade ao jogo. Da mesma forma, rolar <strong>6 e 6</strong> pode resultar em algo muito melhor do que um sucesso comum!</li>
+            </ul>
+            <p>Essas alterações serão sempre <strong>flexíveis e experimentais</strong>. Embora usemos as regras originais como base, não se surpreendam se uma mudança ocorrer durante a sessão. Algumas dessas adaptações podem até se tornar <strong>padrão</strong> se funcionarem bem, enquanto outras serão descartadas.</p>
+            <p>A ideia é que cada sessão seja uma experiência única e adaptada à nossa mesa!</p>
+
+            <h2>Bombinhas do Faísca</h2>
+            <p><strong>Ataque normal à distância:</strong> O Faísca usa <strong>3d6</strong> por ser especialista. Se o ataque for bem-sucedido, você sorteia um efeito da lista abaixo. Se falhar, o efeito é inofensivo. Você pode usar uma ação para escolher o tipo de munição no próximo ataque.</p>
+            <p>Os efeitos das munições abaixo são sugestões e o mestre pode alterá-los. Inclusive, dependendo da natureza do alvo, o efeito pode ser diminuído, inofensivo ou até pior.</p>
+
+            <h3>Munições iniciais:</h3>
+            <ol>
+                <li><strong>KAPOW 💣:</strong> Bomba de fragmento. Causa <strong>1 de dano</strong>.</li>
+                <li><strong>KAPOWCHOV 🔥:</strong> Ingredientes inflamam. Causa <strong>1 de dano de fogo</strong> (pode inflamar algo).</li>
+                <li><strong>TOXIC 😵:</strong> Causa <strong>1 dano de veneno</strong> (sem defeito duradouro).</li>
+                <li><strong>ZAP 📸:</strong> Cega o alvo momentaneamente. O próximo ataque dele tem <strong>desvantagem</strong> ou ele perde uma ação no seu próximo turno.</li>
+                <li><strong>GRUDE 💢:</strong> Gosma pegajosa. Reduz o movimento em <strong>-1,5m por 1d6 turnos</strong> ou até mesmo impede o alvo de se mover por um turno.</li>
+                <li><strong>BAFORADA 💨:</strong> Bomba de fumaça (6 metros de diâmetro, dura 2 turnos). Se o alvo ficar no local, ataques feitos e recebidos à distância têm <strong>desvantagem</strong> ou o alvo fica impedido de fazer ataque à distância, a critério do mestre.</li>
+                <li><strong>BRRRRRRL 🥶:</strong> Causa <strong>1 dano de gelo</strong> (que pode congelar, por 1 turno, pequena porção de líquidos ou dar desvantagem para atacar por um turno).</li>
+                <li><strong>GAMBÁ 🤢:</strong> Bomba de fedor. O alvo faz um <strong>Teste de Salvação</strong>, se falhar, deve se mover (se estiver impedido de se mover, perde 1 ação). Alguns alvos podem ter vantagem no teste por serem acostumados com fedor ou serem imunes por não poderem sentir cheiros.</li>
+                <li><strong>BESUNTO 🛢️:</strong> Óleo. O alvo faz um <strong>Teste de Salvação</strong>, se falhar, cai, tendo que gastar 1 ação se quiser se levantar. Ou apenas cai direto. Alguns alvos podem ter vantagem no teste por serem grandes ou serem imunes por já serem viscosos, flutuantes, realmente enormes, etc.</li>
+                <li><strong>PURPURINA 🎆:</strong> Pó de cogumelos brilhantes. (Sugestão: próximo ataque contra o atingido tem <strong>vantagem</strong>).</li>
+            </ol>
+
+            <a href="index.html" class="back-to-menu">↩ Voltar ao Menu Principal</a>
+        </div>
+    </div>
+</body>
+</html>
