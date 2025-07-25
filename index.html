@@ -43,19 +43,20 @@
             margin-bottom: 40px;
         }
         .menu-options {
-            /* Alterado para um grid 2x2 */
+            /* Alterado para um grid que suporta 5 botões de forma elegante */
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
+            justify-content: center;
         }
         .menu-button {
             display: block;
-            padding: 20px 30px; /* Ajustado o padding para caber melhor */
+            padding: 20px 30px;
             background-color: var(--cor-destaque);
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            font-size: 16px; /* Levemente reduzido para melhor encaixe */
+            font-size: 16px;
             font-weight: bold;
             transition: background-color 0.3s, transform 0.2s;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -64,16 +65,27 @@
             background-color: var(--cor-destaque-hover);
             transform: translateY(-3px);
         }
+        /* Estilo para o botão do prólogo, para dar um destaque sutil */
+        .prologue-button {
+            grid-column: 1 / -1; /* Faz este botão ocupar a largura total da grade */
+            background-color: var(--cor-destaque-hover); /* Cor um pouco diferente para destaque */
+        }
+        .prologue-button:hover {
+            background-color: var(--cor-destaque);
+        }
     </style>
 </head>
 <body>
     <div class="menu-container">
-        <h1>Portal Tiny Dungeon</h1>
+        <h1>Portal Crystal Fantasy</h1>
         <p>Escolha o seu destino, aventureiro!</p>
         <div class="menu-options">
+            <!-- Botão do Prólogo em destaque -->
+            <a href="prologo.html" class="menu-button prologue-button">📖 Ler o Prólogo</a>
+            
+            <!-- Outros botões -->
             <a href="criador.html" class="menu-button">Criar Novo Personagem</a>
             <a href="fichas.html" class="menu-button">Ver Fichas Prontas</a>
-            <!-- Novos botões adicionados abaixo -->
             <a href="https://drive.google.com/file/d/1o-mlUvaWSIm8BK16Aq0cApcflqJc9aSb/view?usp=drive_link" target="_blank" class="menu-button">Manual (Traduzido )</a>
             <a href="https://drive.google.com/file/d/1u1QulDMTyBWALdAJ9EI5jDSAwTpaZVPc/view?usp=drive_link" target="_blank" class="menu-button">Manual (Original )</a>
         </div>
