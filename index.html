@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal - Aventuras em Tiny Dungeon</title>
+    <title>Portal - Crystal Fantasy</title>
     <style>
         :root {
             --cor-fundo: #fdf6e3;
@@ -20,8 +20,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Garante que o conteúdo centralize mesmo em telas grandes */
             margin: 0;
+            padding: 20px 0; /* Adiciona um pouco de espaço vertical */
         }
         .menu-container {
             text-align: center;
@@ -30,6 +31,8 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border: 1px solid var(--cor-borda);
+            width: 90%;
+            max-width: 900px; /* Aumenta um pouco a largura máxima para acomodar 3 colunas */
         }
         h1 {
             color: var(--cor-destaque);
@@ -43,15 +46,14 @@
             margin-bottom: 40px;
         }
         .menu-options {
-            /* Alterado para um grid que suporta 5 botões de forma elegante */
+            /* Alterado para um grid 3x2 */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Layout responsivo */
             gap: 20px;
-            justify-content: center;
         }
         .menu-button {
             display: block;
-            padding: 20px 30px;
+            padding: 20px;
             background-color: var(--cor-destaque);
             color: white;
             text-decoration: none;
@@ -65,14 +67,6 @@
             background-color: var(--cor-destaque-hover);
             transform: translateY(-3px);
         }
-        /* Estilo para o botão do prólogo, para dar um destaque sutil */
-        .prologue-button {
-            grid-column: 1 / -1; /* Faz este botão ocupar a largura total da grade */
-            background-color: var(--cor-destaque-hover); /* Cor um pouco diferente para destaque */
-        }
-        .prologue-button:hover {
-            background-color: var(--cor-destaque);
-        }
     </style>
 </head>
 <body>
@@ -80,12 +74,10 @@
         <h1>Portal Crystal Fantasy</h1>
         <p>Escolha o seu destino, aventureiro!</p>
         <div class="menu-options">
-            <!-- Botão do Prólogo em destaque -->
-            <a href="prologo.html" class="menu-button prologue-button">📖 Ler o Prólogo</a>
-            
-            <!-- Outros botões -->
+            <a href="prologo.html" class="menu-button">📖 Ler o Prólogo</a>
             <a href="criador.html" class="menu-button">Criar Novo Personagem</a>
             <a href="fichas.html" class="menu-button">Ver Fichas Prontas</a>
+            <a href="regrasdacasa.html" class="menu-button">📜 Regras da Casa</a>
             <a href="https://drive.google.com/file/d/1o-mlUvaWSIm8BK16Aq0cApcflqJc9aSb/view?usp=drive_link" target="_blank" class="menu-button">Manual (Traduzido )</a>
             <a href="https://drive.google.com/file/d/1u1QulDMTyBWALdAJ9EI5jDSAwTpaZVPc/view?usp=drive_link" target="_blank" class="menu-button">Manual (Original )</a>
         </div>
