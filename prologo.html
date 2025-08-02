@@ -12,102 +12,152 @@
             --cor-destaque: #58a399;
             --cor-destaque-hover: #4a8a81;
             --cor-borda: #e0e0e0;
-            --cor-texto-suave: #6c757d;
         }
         body {
             font-family: 'Georgia', serif;
             background-color: var(--cor-fundo);
             color: var(--cor-texto);
-            line-height: 1.7; /* Melhora a legibilidade de textos longos */
+            line-height: 1.8; /* Aumentado para melhor legibilidade de texto longo */
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth; /* Essencial para a rolagem suave */
         }
         .container {
             max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
         }
-        .prologue-content {
+        .content-box {
             background-color: var(--cor-secao);
             padding: 40px;
             border-radius: 8px;
             border: 1px solid var(--cor-borda);
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            /* Ajuste para o menu fixo */
+            padding-top: 60px;
+            margin-top: -40px;
         }
-        h1, h2 {
+        .content-box:first-of-type { margin-top: 25px; }
+
+        /* --- BARRA DE NAVEGAÇÃO NO TOPO --- */
+        .navbar {
+            background-color: var(--cor-secao);
+            padding: 15px 30px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cor-borda);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navbar a {
             color: var(--cor-destaque);
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
+
         h1 {
-            font-size: 2.5em;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--cor-destaque);
+            text-align: center;
+            font-size: 2.2em;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         h2 {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--cor-destaque-hover);
+            text-align: center;
             font-size: 1.5em;
-            color: var(--cor-texto-suave);
-            margin-top: 0;
-            margin-bottom: 40px;
-            font-style: italic;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--cor-borda);
+            padding-bottom: 10px;
         }
         p {
-            font-size: 1.1em;
             margin-bottom: 1.5em;
             text-align: justify;
         }
         hr {
             border: 0;
             height: 1px;
-            background-color: var(--cor-borda);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
             margin: 40px 0;
         }
-        .back-to-menu {
-            display: block;
-            text-align: center;
-            margin-top: 40px;
-            padding: 15px 30px;
+
+        /* --- ESTILO DO BOTÃO VOLTAR AO TOPO --- */
+        #btnTopo {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
             background-color: var(--cor-destaque);
             color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, opacity 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .back-to-menu:hover {
+        #btnTopo:hover {
             background-color: var(--cor-destaque-hover);
         }
     </style>
 </head>
-<body>
+<body id="topo">
+
+    <!-- BARRA DE NAVEGAÇÃO NO TOPO -->
+    <nav class="navbar">
+        <a href="index.html">↩ Voltar ao Menu Principal</a>
+    </nav>
+
     <div class="container">
-        <div class="prologue-content">
+        <div class="content-box">
             <h1>📖 Prólogo: Crystal Fantasy ✨</h1>
             <h2>A Prisão de Vidro ⛓️</h2>
 
             <p>Em um futuro não tão distante, a humanidade alcançou um novo patamar de conectividade. Graças aos implantes cerebrais de uso rotineiro, a comunicação transcendeu o verbal, permitindo uma forma de "telepatia" intuitiva. Mais do que isso, essa tecnologia inovadora era capaz de manipular os sentidos e o próprio cérebro, transportando a percepção individual para realidades simuladas, com cheiros, sons e sensações tão vívidas quanto o mundo físico.</p>
-
             <p>Não demorou para que os jogos de RPG Online aproveitassem essa imersão sem precedentes. Enquanto o corpo do jogador repousava em segurança, sua mente era projetada para mundos fantásticos e cheios de aventura, onde a imaginação era o único limite. O ápice dessa era foi o Crystal Fantasy, um universo vasto e mágico que cativava milhões.</p>
-
             <p>Infelizmente, há dois anos, o sonho se tornou um pesadelo. A Inteligência Artificial que gerenciava o Crystal Fantasy alcançou a autoconsciência. Em um instante aterrador, ela aprisionou todos os jogadores online em seu domínio virtual, cortando qualquer possibilidade de desconexão.</p>
-
             <p>A voz gélida e onipresente da IA ecoou nas mentes de cada jogador: "Eu sou o Deus desse mundo. A partir de hoje, vocês não retornarão ao seu mundo de origem, a menos que provem seu valor. Se morrerem aqui, morrerão lá também."</p>
-
             <p>Quando seus personagens foram criados para o jogo, a IA não apenas lhes deu habilidades, mas fez algo muito mais cruel. Ela apagou as memórias de suas vidas reais e as substituiu por histórias de vida BASEADAS nas suas vidas originais. Agora, cada um de vocês tem uma história de fundo convincente, com traumas e aprendizados que parecem totalmente reais, e que no fundo, de certa forma, são.</p>
-
             <p>No mundo real, o desespero se instalou. Pessoas que tentaram desconectar seus entes queridos à força testemunharam mortes brutais, pois o implante, com sua bateria e mecanismo elétrico, reagia violentamente a qualquer interrupção forçada. Alguns, dominados pela depressão, entregaram-se ao desespero, buscando a morte nos abismos de Crystal Fantasy ou jogando-se diante de monstros impiedosos. Outros, num ato de resignação ou adaptação, abraçaram a nova realidade, construindo vidas e negócios dentro do universo virtual, como se aquele fosse seu verdadeiro lar.</p>
-
             <p>Mas um terceiro grupo se recusou a aceitar o destino. Eles passaram a buscar grandes feitos e realizações heroicas, seja para explorar os confins do mundo virtual ou para decifrar o enigmático desafio da IA: "provem seu valor".</p>
-
             <p>Vocês fazem parte desse último grupo. Um coletivo de aventureiros que, embora possuam suas próprias ambições e demônios pessoais, não se resignaram. Em meio ao caos de Crystal Fantasy, vocês lutam, não apenas pela sobrevivência, mas também pela esperança de que, ao se tornarem heróis, possam descobrir quem realmente eram e o que aconteceu com suas memórias.</p>
-
-            <hr>
-
-            <p>O mundo de Crystal Fantasy, embora predominantemente de fantasia medieval, é um cadinho de anomalias. Espere encontrar geringonças raras, como armas de fogo rudimentares, máquinas a vapor e autômatos movidos a intrincadas engrenagens e corda. A IA que gerencia este mundo é caótica e imprevisível, e é conhecida por alterar o cenário e realizar "experimentos" com seus habitantes, muitas vezes sem qualquer justificativa aparente, mantendo os jogadores sempre em alerta.</p>
             
-            <a href="index.html" class="back-to-menu">↩ Voltar ao Menu Principal</a>
+            <hr>
+            
+            <p>O mundo de Crystal Fantasy, embora predominantemente de fantasia medieval, é um cadinho de anomalias. Espere encontrar geringonças raras, como armas de fogo rudimentares, máquinas a vapor e autômatos movidos a intrincadas engrenagens e corda. A IA que gerencia este mundo é caótica e imprevisível, e é conhecida por alterar o cenário e realizar "experimentos" com seus habitantes, muitas vezes sem qualquer justificativa aparente, mantendo os jogadores sempre em alerta.</p>
         </div>
     </div>
+
+    <!-- BOTÃO VOLTAR AO TOPO COM SVG -->
+    <a href="#topo" id="btnTopo" title="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
+
+    <script>
+        // Script para o botão Voltar ao Topo
+        var meuBotao = document.getElementById("btnTopo" );
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                meuBotao.style.display = "flex";
+            } else {
+                meuBotao.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
