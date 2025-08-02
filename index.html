@@ -20,9 +20,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Garante que o conteúdo centralize mesmo em telas grandes */
+            min-height: 100vh;
             margin: 0;
-            padding: 20px 0; /* Adiciona um pouco de espaço vertical */
+            padding: 20px 0;
         }
         .menu-container {
             text-align: center;
@@ -32,7 +32,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border: 1px solid var(--cor-borda);
             width: 90%;
-            max-width: 900px; /* Aumenta um pouco a largura máxima para acomodar 3 colunas */
+            max-width: 1000px;
         }
         h1 {
             color: var(--cor-destaque);
@@ -46,9 +46,8 @@
             margin-bottom: 40px;
         }
         .menu-options {
-            /* Alterado para um grid 3x2 */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Layout responsivo */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
         .menu-button {
@@ -75,11 +74,12 @@
         <p>Escolha o seu destino, aventureiro!</p>
         <div class="menu-options">
             <a href="prologo.html" class="menu-button">📖 Ler o Prólogo</a>
-            <a href="criador.html" class="menu-button">Criar Novo Personagem</a>
-            <a href="fichas.html" class="menu-button">Ver Fichas Prontas</a>
+            <a href="tinycast.html" class="menu-button">🎙️ Ouvir o TinyCast</a>
+            <a href="criador.html" class="menu-button">✨ Criar Personagem</a>
+            <a href="fichas.html" class="menu-button">👥 Ver Fichas Prontas</a>
             <a href="regrasdacasa.html" class="menu-button">📜 Regras da Casa</a>
-            <a href="https://drive.google.com/file/d/1o-mlUvaWSIm8BK16Aq0cApcflqJc9aSb/view?usp=drive_link" target="_blank" class="menu-button">Manual (Traduzido )</a>
-            <a href="https://drive.google.com/file/d/1u1QulDMTyBWALdAJ9EI5jDSAwTpaZVPc/view?usp=drive_link" target="_blank" class="menu-button">Manual (Original )</a>
+            <a href="https://drive.google.com/file/d/1o-mlUvaWSIm8BK16Aq0cApcflqJc9aSb/view?usp=drive_link" target="_blank" class="menu-button">🇧🇷 Manual (Traduzido )</a>
+            <a href="https://drive.google.com/file/d/1u1QulDMTyBWALdAJ9EI5jDSAwTpaZVPc/view?usp=drive_link" target="_blank" class="menu-button">🇺🇸 Manual (Original )</a>
         </div>
     </div>
 </body>
