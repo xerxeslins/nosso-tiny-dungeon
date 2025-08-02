@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyCast - O Podcast</title>
+    <style>
+        :root {
+            --cor-fundo: #fdf6e3;
+            --cor-secao: #ffffff;
+            --cor-texto: #3d3d3d;
+            --cor-destaque: #58a399;
+            --cor-destaque-hover: #4a8a81;
+            --cor-borda: #e0e0e0;
+            --cor-texto-suave: #6c757d;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* Essencial para a rolagem suave do botão "Voltar ao Topo" */
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content-box {
+            background-color: var(--cor-secao);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            /* Ajuste para o menu fixo */
+            padding-top: 60px;
+            margin-top: -40px;
+        }
+        .content-box:first-of-type { margin-top: 25px; }
+
+        /* --- BARRA DE NAVEGAÇÃO NO TOPO --- */
+        .navbar {
+            background-color: var(--cor-secao);
+            padding: 15px 30px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cor-borda);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navbar a {
+            color: var(--cor-destaque);
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        h1 {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--cor-destaque);
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--cor-destaque);
+            padding-bottom: 15px;
+        }
+        .episode-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .episode-card {
+            background-color: #f8f9fa;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .episode-info {
+            flex-grow: 1;
+        }
+        .episode-title {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 1.4em;
+            color: var(--cor-destaque-hover);
+            margin: 0;
+        }
+        .episode-date {
+            font-size: 0.9em;
+            color: var(--cor-texto-suave);
+            font-style: italic;
+            margin: 0;
+        }
+        .play-button {
+            background-color: var(--cor-destaque);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, transform 0.2s;
+            flex-shrink: 0;
+        }
+        .play-button:hover {
+            background-color: var(--cor-destaque-hover);
+            transform: scale(1.1);
+        }
+        .play-button svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+            margin-left: 4px;
+        }
+        .hidden-link {
+            display: none;
+        }
+
+        /* --- ESTILO DO BOTÃO VOLTAR AO TOPO --- */
+        #btnTopo {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--cor-destaque);
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, opacity 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #btnTopo:hover {
+            background-color: var(--cor-destaque-hover);
+        }
+    </style>
+</head>
+<body id="topo">
+
+    <!-- BARRA DE NAVEGAÇÃO NO TOPO -->
+    <nav class="navbar">
+        <a href="index.html">↩ Voltar ao Menu Principal</a>
+    </nav>
+
+    <div class="container">
+        <div class="content-box">
+            <h1>🎙️ TinyCast</h1>
+            <div class="episode-list">
+
+                <!-- Episódio 3 (Mais recente) -->
+                <div class="episode-card">
+                    <div class="episode-info">
+                        <h2 class="episode-title">Episódio 3: Arremesso de armas leves</h2>
+                        <p class="episode-date">01 de agosto de 2025</p>
+                    </div>
+                    <button class="play-button" onclick="playInNewTab(this)">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                    </button>
+                    <a href="https://drive.google.com/file/d/19jzJp1tiOlo-J1pH4u31XgiMAJyQmVEu/preview" class="hidden-link"></a>
+                </div>
+
+                <!-- Episódio 2 -->
+                <div class="episode-card">
+                    <div class="episode-info">
+                        <h2 class="episode-title">Episódio 2: Ataque furtivo</h2>
+                        <p class="episode-date">01 de agosto de 2025</p>
+                    </div>
+                    <button class="play-button" onclick="playInNewTab(this )">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                    </button>
+                    <a href="https://drive.google.com/file/d/1gdTRyVYW2l0ZF1HFu8sOx715JIRU-zAG/preview" class="hidden-link"></a>
+                </div>
+
+                <!-- Episódio 1 (Mais antigo ) -->
+                <div class="episode-card">
+                    <div class="episode-info">
+                        <h2 class="episode-title">Episódio 1: Manobra: arremessar um oponente</h2>
+                        <p class="episode-date">01 de agosto de 2025</p>
+                    </div>
+                    <button class="play-button" onclick="playInNewTab(this)">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                    </button>
+                    <a href="https://drive.google.com/file/d/1JmX9tOuX9KKALZPAqqq2PGSIGM_2deQM/preview" class="hidden-link"></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÃO VOLTAR AO TOPO COM SVG -->
+    <a href="#topo" id="btnTopo" title="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
+
+    <script>
+        // Script para o botão de play
+        function playInNewTab(buttonElement ) {
+            const hiddenLink = buttonElement.nextElementSibling;
+            const url = hiddenLink.href;
+            window.open(url, '_blank');
+        }
+
+        // Script para o botão Voltar ao Topo
+        var meuBotao = document.getElementById("btnTopo");
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                meuBotao.style.display = "flex";
+            } else {
+                meuBotao.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
