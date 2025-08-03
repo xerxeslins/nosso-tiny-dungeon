@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Aventuras - Crystal Fantasy</title>
+    <style>
+        :root {
+            --cor-fundo: #fdf6e3;
+            --cor-secao: #ffffff;
+            --cor-texto: #3d3d3d;
+            --cor-destaque: #58a399;
+            --cor-destaque-hover: #4a8a81;
+            --cor-borda: #e0e0e0;
+            --cor-texto-suave: #6c757d;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content-box {
+            background-color: var(--cor-secao);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--cor-borda);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding-top: 60px;
+            margin-top: -40px;
+        }
+        .content-box:first-of-type { margin-top: 25px; }
+        .navbar {
+            background-color: var(--cor-secao);
+            padding: 15px 30px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cor-borda);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navbar a {
+            color: var(--cor-destaque);
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        h1 {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--cor-destaque);
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--cor-destaque);
+            padding-bottom: 15px;
+        }
+        
+        /* Estilos para a lista de aventuras */
+        .adventure-list {
+            list-style: none;
+            padding: 0;
+        }
+        .adventure-item {
+            background-color: #f8f9fa;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .adventure-title {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 1.6em;
+            color: var(--cor-destaque-hover);
+            margin: 0 0 15px 0;
+        }
+        .adventure-parts {
+            list-style: none;
+            padding: 0;
+        }
+        .adventure-parts li {
+            margin-bottom: 10px;
+        }
+        .adventure-parts a {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--cor-texto);
+            background-color: var(--cor-secao);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--cor-borda);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .adventure-parts a:hover {
+            background-color: var(--cor-destaque);
+            color: white;
+        }
+        .adventure-parts a::before {
+            content: '📜 ';
+        }
+
+        #btnTopo {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--cor-destaque);
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, opacity 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #btnTopo:hover {
+            background-color: var(--cor-destaque-hover);
+        }
+    </style>
+</head>
+<body id="topo">
+
+    <nav class="navbar">
+        <a href="index.html">↩ Voltar ao Menu Principal</a>
+    </nav>
+
+    <div class="container">
+        <div class="content-box">
+            <h1>🗺️ Diário de Aventuras</h1>
+            
+            <ul class="adventure-list">
+                <!-- Aventura 1 -->
+                <li class="adventure-item">
+                    <h2 class="adventure-title">Aventura 1: A fúria dos goblins</h2>
+                    <ul class="adventure-parts">
+                        <li>
+                            <a href="aventuras/a_furia_dos_goblins/CF-001.txt" target="_blank">Parte 1</a>
+                        </li>
+                        <!-- Quando tiver a parte 2, adicione aqui -->
+                        <!-- <li><a href="caminho/para/parte2.txt" target="_blank">Parte 2</a></li> -->
+                    </ul>
+                </li>
+
+                <!-- Quando tiver a Aventura 2, adicione aqui -->
+                <!-- 
+                <li class="adventure-item">
+                    <h2 class="adventure-title">Aventura 2: Título da Aventura</h2>
+                    <ul class="adventure-parts">
+                        <li><a href="caminho/para/aventura2.txt" target="_blank">Parte 1</a></li>
+                    </ul>
+                </li>
+                -->
+            </ul>
+        </div>
+    </div>
+
+    <a href="#topo" id="btnTopo" title="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
+
+    <script>
+        var meuBotao = document.getElementById("btnTopo" );
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                meuBotao.style.display = "flex";
+            } else {
+                meuBotao.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
