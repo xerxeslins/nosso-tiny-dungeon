@@ -145,9 +145,8 @@
         .panel ul li { margin-bottom: 5px; }
         .panel p { margin: 0; padding-bottom: 10px; }
         
-        /* ESTILO DO BOTÃO VOLTAR AO TOPO (COM SVG) */
         #btnTopo {
-            display: none; /* Começa escondido */
+            display: none;
             position: fixed;
             bottom: 20px;
             right: 30px;
@@ -155,15 +154,13 @@
             border: none;
             outline: none;
             background-color: var(--cor-destaque);
-            color: white; /* A cor do ícone SVG será branca */
+            color: white;
             cursor: pointer;
             border-radius: 50%;
             width: 50px;
             height: 50px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: background-color 0.3s, opacity 0.3s;
-            
-            /* Adicionado para centralizar o SVG perfeitamente */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -177,20 +174,21 @@
 <body id="topo">
     <nav class="navbar">
         <a href="index.html">↩ Voltar ao Menu</a>
-        <a href="#personagem2">Sunat Bhal</a>
-        <a href="#personagem3">Itanajé</a>
-        <a href="#personagem4">Samael</a>
-        <a href="#personagem5">Faísca</a>
-        <a href="#personagem6">John Mard</a>
+        <a href="#personagem_sunat">Sunat</a>
+        <a href="#personagem_itanaje">Itanajé</a>
+        <a href="#personagem_samael">Samael</a>
+        <a href="#personagem_faisca">Faísca</a>
+        <a href="#personagem_john">John</a>
         <a href="#personagem_kael">Kael</a>
+        <a href="#personagem_thalion">Thalion</a>
     </nav>
     <div class="container">
         <h1>Fichas de Personagem</h1>
         
-        <section id="personagem2" class="character-sheet">
+        <section id="personagem_sunat" class="character-sheet">
             <div class="character-main-info">
                 <div class="character-text-data">
-                    <div class="character-header"><h2>Sunat Bhal</h2><span class="details">(Humano | 6 PV)</span></div>
+                    <div class="character-header"><h2>Sunat Bhal</h2><span class="details">(Humano | 7 PV)</span></div>
                     <p class="character-belief">Existe um lugar no mundo para cada ser.</p>
                     <div class="stat-block"><strong>Proficiência:</strong> À Distância (Besta)</div>
                     <div class="stat-block"><strong>Traços:</strong> Atirador, Tiro Rápido, Curandeiro, Pés Ligeiros</div>
@@ -200,7 +198,7 @@
                 </div>
             </div>
             <button class="accordion-button">Equipamento</button>
-            <div class="panel"><ul><li>Besta (arma especializada)</li><li>10 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
+            <div class="panel"><ul><li>Besta (arma especializada)</li><li>Poção azul</li><li>Pergaminho</li><li>20 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
             <button class="accordion-button">Mais Informações</button>
             <div class="panel">
                 <p>Sunat cresceu num assentamento cavado no subsolo de um deserto glacial. Seus antepassados fugiram de uma profecia e de nobres avarentos, decididos a encontrar um lar em meio as adversidades; Anghoj o ancião teve um sonho que revelou o plano de se esconder dos Deuses sob a terra.</p>
@@ -209,10 +207,10 @@
             </div>
         </section>
 
-        <section id="personagem3" class="character-sheet">
+        <section id="personagem_itanaje" class="character-sheet">
             <div class="character-main-info">
                 <div class="character-text-data">
-                    <div class="character-header"><h2>Itanajé, a Pedra que Anda</h2><span class="details">(Humano | 6 PV)</span></div>
+                    <div class="character-header"><h2>Itanajé, a Pedra que Anda</h2><span class="details">(Humano | 7 PV)</span></div>
                     <p class="character-belief">A força e astúcia conquistam tudo.</p>
                     <div class="stat-block"><strong>Proficiência:</strong> Corpo a Corpo Pesada (Espada Grande)</div>
                     <div class="stat-block"><strong>Traços:</strong> Duro de Matar, Forte, Furtivo, Perceptivo</div>
@@ -222,7 +220,7 @@
                 </div>
             </div>
             <button class="accordion-button">Equipamento</button>
-            <div class="panel"><ul><li>Espada Grande (sua arma especializada)</li><li>10 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
+            <div class="panel"><ul><li>Espada Grande (sua arma especializada)</li><li>Adaga</li><li>Manto de urso</li><li>7 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
             <button class="accordion-button">Mais Informações</button>
             <div class="panel">
                 <p>Itanajé nasceu entre os Tukaré, um povo guerreiro da floresta. Desde a infância demonstrou força sobre-humana e instinto selvagem. Ganhou seu nome após matar um jaguar com as próprias mãos e ser reconhecido pelos pajés como “aquele que tem o poder da pedra”.</p>
@@ -231,10 +229,10 @@
             </div>
         </section>
 
-        <section id="personagem4" class="character-sheet">
+        <section id="personagem_samael" class="character-sheet">
             <div class="character-main-info">
                 <div class="character-text-data">
-                    <div class="character-header"><h2>Samael "Sam" Molarranj</h2><span class="details">(Humano | 6 PV)</span></div>
+                    <div class="character-header"><h2>Samael "Sam" Molarranj</h2><span class="details">(Humano | 7 PV)</span></div>
                     <p class="character-belief">Os sentimentos são ferramentas da razão.</p>
                     <div class="stat-block"><strong>Proficiência:</strong> À Distância (Pistola)</div>
                     <div class="stat-block"><strong>Traços:</strong> Furioso, Oportunista, Resoluto, Tiro Rápido</div>
@@ -253,10 +251,10 @@
             </div>
         </section>
 
-        <section id="personagem5" class="character-sheet">
+        <section id="personagem_faisca" class="character-sheet">
             <div class="character-main-info">
                 <div class="character-text-data">
-                    <div class="character-header"><h2>Faísca</h2><span class="details">(Goblin | 4 PV)</span></div>
+                    <div class="character-header"><h2>Faísca</h2><span class="details">(Goblin | 5 PV)</span></div>
                     <p class="character-belief">Ouro é muito bom... Para torrar em pólvora.</p>
                     <div class="stat-block"><strong>Proficiência:</strong> À Distância (Funda)</div>
                     <div class="stat-block"><strong>Traços:</strong> Alquimista, Mestre de Armadilhas, Tiro Rápido</div>
@@ -266,7 +264,7 @@
                 </div>
             </div>
             <button class="accordion-button">Equipamento</button>
-            <div class="panel"><ul><li>Funda (sua arma especializada)</li><li>5 Peças de Ouro</li><li>Materiais para criar uma mina</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
+            <div class="panel"><ul><li>Funda (sua arma especializada)</li><li>Dois frascos com dose de veneno paralisante</li><li>Fatias de cogumelo</li><li>5 Peças de Ouro</li><li>Materiais para criar uma mina</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
             <button class="accordion-button">Mais Informações</button>
             <div class="panel">
                 <p>Faísca é membro de uma família que gerencia um boticário antigo na vila, que vende perfumes, aromatizantes de ambientes alguns chás naturais.</p>
@@ -274,10 +272,10 @@
             </div>
         </section>
 
-        <section id="personagem6" class="character-sheet">
+        <section id="personagem_john" class="character-sheet">
             <div class="character-main-info">
                 <div class="character-text-data">
-                    <div class="character-header"><h2>John Mard</h2><span class="details">(Humano | 6 PV)</span></div>
+                    <div class="character-header"><h2>John Mard</h2><span class="details">(Humano | 7 PV)</span></div>
                     <p class="character-belief">Minha fé reside na Deusa Nitride</p>
                     <div class="stat-block"><strong>Proficiência:</strong> Corpo a Corpo Leve (Espada curta)</div>
                     <div class="stat-block"><strong>Traços:</strong> Carismático, Explorador de Masmorras, Familiar, Forte</div>
@@ -297,7 +295,7 @@
         <section id="personagem_kael" class="character-sheet">
             <div class="character-main-info">
                 <div class="character-text-data">
-                    <div class="character-header"><h2>Kael</h2><span class="details">(Humano | 6 PV)</span></div>
+                    <div class="character-header"><h2>Kael</h2><span class="details">(Humano | 7 PV)</span></div>
                     <p class="character-belief">O mundo sussurra para quem ouve. E cobra de quem entende.</p>
                     <div class="stat-block"><strong>Proficiência:</strong> À Distância (Kunai)</div>
                     <div class="stat-block"><strong>Traços:</strong> Furtivo, Memória Eidética, Perceptivo, Perspicaz</div>
@@ -316,6 +314,29 @@
                 <p>Em Crystal Fantasy, Kael parece atraído por lugares distorcidos, onde o mundo treme sob o controle da IA. Sem saber por quê, ele sente quando algo está “errado” com a realidade — ecos de algo maior, pistas que podem levá-lo ao que perdeu… ou ao que realmente é.</p>
             </div>
         </section>
+
+        <section id="personagem_thalion" class="character-sheet">
+            <div class="character-main-info">
+                <div class="character-text-data">
+                    <div class="character-header"><h2>Thalion Aerendir Calenmir</h2><span class="details">(Fey | 7 PV)</span></div>
+                    <p class="character-belief">Sem amigos, o vinho é azedo. Sem brinde, a cerveja é quente. Sem caos, eu não seria nada.</p>
+                    <div class="stat-block"><strong>Proficiência:</strong> Corpo a Corpo Leve (Cajado)</div>
+                    <div class="stat-block"><strong>Traços:</strong> Mestria em Arco, Carismático, Estudante de Magia, Tocado pela Magia</div>
+                </div>
+                <div class="character-image-container">
+                    <img src="thalion.png" alt="Imagem de Thalion" class="character-image">
+                </div>
+            </div>
+            <button class="accordion-button">Equipamento</button>
+            <div class="panel"><ul><li>Cajado (sua arma especializada)</li><li>Arco (maestria)</li><li>10 Peças de Ouro</li><li>Kit de Aventureiro (um saco de dormir, pederneira, uma algibeira, uma mochila, uma lanterna, um cantil vazio, 3 litros de óleo, uma corda de 15 metros, rações para 7 dias, uma tocha e uma capa)</li></ul></div>
+            <button class="accordion-button">Mais Informações</button>
+            <div class="panel">
+                <p>Thalion é um elfo que nasceu para ser diferente, mesmo em um povo que valoriza perfeição, paciência e disciplina. Onde outros buscavam grandeza em treinamentos, disciplina e hierarquias, ele buscava gargalhadas, tavernas e bons tragos. A vida para ele nunca foi feita de linhas retas ou regras rígidas — mas de curvas incertas, tropeços, improvisos e histórias para serem lembradas entre copos.</p>
+                <p>Sua personalidade é um paradoxo vivo: debochado e sábio, indisciplinado e brilhante. Ele é um mago de fala rápida e língua afiada, capaz de destruir ilusões sombrias mais com sarcasmo do que com feitiços. Thalion não esconde seus vícios — ama beber, ama festejar, ama provocar — mas ainda assim, havia talento real em sua alma. Quando todos riam de seus fracassos, um velho arquimago chamado Elerion, o Austero, decidiu acolhê-lo como aprendiz. Sob sua tutela, Thalion aprendeu o valor da magia séria, e talvez, pela primeira vez, começou a acreditar em si mesmo. Mas sua curiosidade e impulsividade o traíram: em um experimento proibido, tentou manipular forças além de sua compreensão. O ritual explodiu, e Elerion morreu ao protegê-lo. Desde aquele dia, Thalion carrega a culpa de ter matado o único que realmente acreditou nele — e talvez seja esse o peso que ele tenta afogar em cada gole de cerveja.</p>
+                <p>Mesmo assim, Thalion nunca se deixou afundar. Ele transforma sua dor em charme, riso e caos criativo. Prefere ser visto como um bêbado legendário do que como um mártir trágico. Seu maior medo não é morrer — é ficar só, ou viver sem companheiros que dão sentido à sua jornada. Ele ama o caos que um grupo traz, porque no fundo sabe que é esse mesmo caos que o completa e o mantém vivo.</p>
+                <p>Thalion é, acima de tudo, um mago que se recusa a viver sem intensidade. Ele prefere errar de forma grandiosa do que acertar sem paixão. Prefere um brinde errado a um silêncio vazio. Para ele, o mundo pode ruir, os deuses podem dormir, mas enquanto houver um copo cheio e amigos ao redor, sempre haverá motivo para sorrir.</p>
+            </div>
+        </section>
     </div>
 
     <a href="#topo" id="btnTopo" title="Voltar ao topo">
@@ -326,7 +347,7 @@
 
     <script>
         // Script para o acordeão
-        var acc = document.getElementsByClassName("accordion-button");
+        var acc = document.getElementsByClassName("accordion-button" );
         for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
                 this.classList.toggle("active");
