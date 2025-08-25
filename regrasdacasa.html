@@ -21,6 +21,7 @@
             line-height: 1.7;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
         .container {
             max-width: 800px;
@@ -33,6 +34,27 @@
             border-radius: 8px;
             border: 1px solid var(--cor-borda);
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            /* Ajuste para o menu fixo */
+            padding-top: 60px;
+            margin-top: -40px;
+        }
+        .content-box:first-of-type { margin-top: 25px; }
+        .navbar {
+            background-color: var(--cor-secao);
+            padding: 15px 30px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cor-borda);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .navbar a {
+            color: var(--cor-destaque);
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         h1, h2, h3 {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -73,28 +95,41 @@
         strong {
             color: var(--cor-texto);
         }
-        .back-to-menu {
-            display: block;
-            text-align: center;
-            margin-top: 40px;
-            padding: 15px 30px;
+        
+        #btnTopo {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
             background-color: var(--cor-destaque);
             color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, opacity 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .back-to-menu:hover {
+        #btnTopo:hover {
             background-color: var(--cor-destaque-hover);
         }
     </style>
 </head>
-<body>
+<body id="topo">
+
+    <nav class="navbar">
+        <a href="index.html">↩ Voltar ao Menu Principal</a>
+    </nav>
+
     <div class="container">
         <div class="content-box">
-            <h1>Regras da Casa</h1>
+            <h1>📜 Regras da Casa</h1>
 
             <p>No nosso jogo de <strong>Tiny Dungeon</strong>, vamos usar um conjunto de regras bem simples, mas é importante que saibam que sou flexível! O principal objetivo é garantir que a história e a diversão sejam sempre a prioridade.</p>
 
@@ -107,7 +142,6 @@
             <p>Essas alterações serão sempre <strong>flexíveis e experimentais</strong>. Embora usemos as regras originais como base, não se surpreendam se uma mudança ocorrer durante a sessão. Algumas dessas adaptações podem até se tornar <strong>padrão</strong> se funcionarem bem, enquanto outras serão descartadas.</p>
             <p>A ideia é que cada sessão seja uma experiência única e adaptada à nossa mesa!</p>
 
-            <!-- NOVA SEÇÃO DE REGRAS DE COMBATE -->
             <h2>Regras de Combate Adicionais</h2>
             
             <h3>Ataque Furtivo</h3>
@@ -119,7 +153,6 @@
             <h3>Arremessar Oponente</h3>
             <p>O atacante faz um teste normal (2d6) para agarrar e arremessar. Se tiver o traço "Forte", usa 3d6. A distância do arremesso fica a cargo do mestre. Caso o oponente arremessado se choque com algo (como uma parede ou outro inimigo), ele sofre <strong>1 de dano</strong>. O alvo arremessado deve fazer um Teste de Salvação para tentar cair de pé. Se falhar, fica caído e perde uma ação na próxima rodada para se levantar.</p>
 
-            <!-- SEÇÕES ANTERIORES -->
             <h2>Familiar: Modos de Interação</h2>
             <p>Seu familiar possui dois modos de interação:</p>
             <ol>
@@ -157,9 +190,26 @@
                 <li><strong>BESUNTO 🛢️:</strong> Óleo. O alvo faz um <strong>Teste de Salvação</strong>, se falhar, cai, tendo que gastar 1 ação se quiser se levantar. Ou apenas cai direto. Alguns alvos podem ter vantagem no teste por serem grandes ou serem imunes por já serem viscosos, flutuantes, realmente enormes, etc.</li>
                 <li><strong>PURPURINA 🎆:</strong> Pó de cogumelos brilhantes. (Sugestão: próximo ataque contra o atingido tem <strong>vantagem</strong>).</li>
             </ol>
-
-            <a href="index.html" class="back-to-menu">↩ Voltar ao Menu Principal</a>
         </div>
     </div>
+
+    <a href="#topo" id="btnTopo" title="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </a>
+
+    <script>
+        var meuBotao = document.getElementById("btnTopo" );
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                meuBotao.style.display = "flex";
+            } else {
+                meuBotao.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
