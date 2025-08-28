@@ -157,7 +157,19 @@
             <h1>🎙️ TinyCast</h1>
             <div class="episode-list">
 
-                <!-- Episódio 9 (Mais recente) -->
+                <!-- Episódio 10 (Mais recente) -->
+                <div class="episode-card">
+                    <div class="episode-info">
+                        <h2 class="episode-title">Episódio 10: Bebe, bebe (por Thalion Aerendir Calenmir)</h2>
+                        <p class="episode-date">28 de agosto de 2025</p>
+                    </div>
+                    <button class="play-button" onclick="playInNewTab(this)">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                    </button>
+                    <a href="https://drive.google.com/file/d/1LyJ3uNK2RGz8y07ndCVlqsl0Q6vxjV_S/view?usp=drive_link" class="hidden-link"></a>
+                </div>
+
+                <!-- Episódio 9 -->
                 <div class="episode-card">
                     <div class="episode-info">
                         <h2 class="episode-title">Episódio 9: Aventura 1: A fúria dos goblins (parte 4)</h2>
@@ -172,7 +184,7 @@
                 <!-- Episódio 8 -->
                 <div class="episode-card">
                     <div class="episode-info">
-                        <h2 class="episode-title">Episódio 8: Aventura 1: A fúria dos goblins (parte 3 )</h2>
+                        <h2 class="episode-title">Episódio 8: Aventura 1: A fúria dos goblins (parte 3)</h2>
                         <p class="episode-date">19 de agosto de 2025</p>
                     </div>
                     <button class="play-button" onclick="playInNewTab(this)">
@@ -184,7 +196,7 @@
                 <!-- Episódio 7 -->
                 <div class="episode-card">
                     <div class="episode-info">
-                        <h2 class="episode-title">Episódio 7: Aventura 1: A fúria dos goblins (parte 2 )</h2>
+                        <h2 class="episode-title">Episódio 7: Aventura 1: A fúria dos goblins (parte 2)</h2>
                         <p class="episode-date">08 de agosto de 2025</p>
                     </div>
                     <button class="play-button" onclick="playInNewTab(this)">
@@ -196,7 +208,7 @@
                 <!-- Episódio 6 -->
                 <div class="episode-card">
                     <div class="episode-info">
-                        <h2 class="episode-title">Episódio 6: Aventura 1: A fúria dos goblins (parte 1 )</h2>
+                        <h2 class="episode-title">Episódio 6: Aventura 1: A fúria dos goblins (parte 1)</h2>
                         <p class="episode-date">03 de agosto de 2025</p>
                     </div>
                     <button class="play-button" onclick="playInNewTab(this)">
@@ -211,7 +223,7 @@
                         <h2 class="episode-title">Episódio 5: O enigmático Toninho</h2>
                         <p class="episode-date">02 de agosto de 2025</p>
                     </div>
-                    <button class="play-button" onclick="playInNewTab(this )">
+                    <button class="play-button" onclick="playInNewTab(this)">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                     </button>
                     <a href="https://drive.google.com/file/d/1eCBVkwF0iTnipXs4o3qxDVKG8dnmOlfG/view?usp=drive_link" class="hidden-link"></a>
@@ -223,7 +235,7 @@
                         <h2 class="episode-title">Episódio 4: O Mundo de Crystal Fantasy</h2>
                         <p class="episode-date">02 de agosto de 2025</p>
                     </div>
-                    <button class="play-button" onclick="playInNewTab(this )">
+                    <button class="play-button" onclick="playInNewTab(this)">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                     </button>
                     <a href="https://drive.google.com/file/d/1zeiof2Gwa1304ewzsoXnageKaMcvSJV9/view?usp=drive_link" class="hidden-link"></a>
@@ -235,7 +247,7 @@
                         <h2 class="episode-title">Episódio 3: Arremesso de armas leves</h2>
                         <p class="episode-date">01 de agosto de 2025</p>
                     </div>
-                    <button class="play-button" onclick="playInNewTab(this )">
+                    <button class="play-button" onclick="playInNewTab(this)">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                     </button>
                     <a href="https://drive.google.com/file/d/1wIXBMnGzF6jHp2MgFqm_EjeyzoLciCWi/view?usp=drive_link" class="hidden-link"></a>
@@ -247,13 +259,13 @@
                         <h2 class="episode-title">Episódio 2: Ataque furtivo</h2>
                         <p class="episode-date">01 de agosto de 2025</p>
                     </div>
-                    <button class="play-button" onclick="playInNewTab(this )">
+                    <button class="play-button" onclick="playInNewTab(this)">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
                     </button>
                     <a href="https://drive.google.com/file/d/1ebuXjY84UevrYJCzum5Mg5gJcVmXwJap/view?usp=drive_link" class="hidden-link"></a>
                 </div>
 
-                <!-- Episódio 1 (Mais antigo ) -->
+                <!-- Episódio 1 (Mais antigo) -->
                 <div class="episode-card">
                     <div class="episode-info">
                         <h2 class="episode-title">Episódio 1: Manobra: arremessar um oponente</h2>
@@ -276,7 +288,7 @@
     </a>
 
     <script>
-        function playInNewTab(buttonElement ) {
+        function playInNewTab(buttonElement) {
             const hiddenLink = buttonElement.nextElementSibling;
             const url = hiddenLink.href;
             window.open(url, '_blank');
@@ -295,3 +307,4 @@
     </script>
 </body>
 </html>
+```
